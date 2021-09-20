@@ -3,16 +3,26 @@ https://leetcode.com/problems/powx-n/
 */
 class Solution {
     public double myPow(double x, int n) {
-        double res = 1, pow = x;
-        while(n != 0)
+        double res = 1.0;
+        long num = n;
+        if(n < 0)
+            num = -1 * num;
+        while(num > 0)
         {
-            if(n % 2 == 1) 
-                res = res * pow;
-            if(n % 2 == -1) 
-                res = res / pow;
-            n = n / 2;
-            pow = pow * pow;
+            if(num % 2 == 0) 
+            {
+                x = x * x;
+                num = num / 2;
+            }
+            else
+            {
+                res = res * x;
+                num = num - 1;
+            }
         }
-        return res;
+        if(n < 0)
+            return (double)(1.0 / res);
+        else
+            return res;
     }
 }
