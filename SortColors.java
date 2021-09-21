@@ -3,28 +3,24 @@ https://leetcode.com/problems/sort-colors/
 */
 class Solution {
     public void sortColors(int[] nums) {
-        int low = 0;
-        int mid = 0;
-        int high = nums.length - 1;
-        int i, t;
+        int low = 0, mid = 0, high = nums.length - 1;
+        int curr;
         while(mid <= high)
         {
-            i = nums[mid];
-            if(i == 0)
+            curr = nums[mid];
+            if(curr == 0)
             {
-                t = nums[low];
-                nums[low] = i;
-                nums[mid] = t;
+                nums[mid] = nums[low];
+                nums[low] = curr;
                 low++;
                 mid++;
             }
-            else if(i == 1)
+            else if(curr == 1)
                 mid++;
             else
             {
-                t = nums[high];
-                nums[high] = i;
-                nums[mid] = t;
+                nums[mid] = nums[high];
+                nums[high] = curr;
                 high--;
             }
         }
