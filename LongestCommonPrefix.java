@@ -3,21 +3,19 @@ https://leetcode.com/problems/longest-common-prefix/
 */
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        int i;
+        if(strs.length == 0)
+            return "";
         String res = strs[0];
-        while(res.length() > 0)
+        int n = res.length();
+        for(int i = 1; i < strs.length; i++)
         {
-            i = 1;
-            for(; i < strs.length; i++)
+            while(strs[i].indexOf(res) != 0)
             {
-                if(strs[i].startsWith(res))
-                    continue;
-                else
-                    break;
+                res = res.substring(0, n - 1);
+                n--;
+                if(n == 0)
+                    return "";
             }
-            if(i == strs.length)
-                break;
-            res = res.substring(0, res.length() - 1);
         }
         return res;
     }
