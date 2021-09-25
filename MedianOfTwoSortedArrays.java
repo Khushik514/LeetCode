@@ -1,6 +1,7 @@
 /*
 https://leetcode.com/problems/median-of-two-sorted-arrays/
-*/class Solution {
+*/
+class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;
@@ -8,7 +9,10 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/
         int i1 = 0;
         int i2 = 0;
         int i = 0;
+        int exp = (m + n - 1) / 2;
         while (i1 < m && i2 < n) {
+            if(i > exp + 1)
+                break;
             if (nums1[i1] < nums2[i2]) {
                 nums[i] = nums1[i1];
                 i1 += 1;
@@ -19,16 +23,19 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/
             i += 1;
         }
         while (i1 < m) {
+            if(i > exp + 1)
+                break;
             nums[i++] = nums1[i1++];
         }
         while (i2 < n) {
+            if(i > exp + 1)
+                break;
             nums[i++] = nums2[i2++];
         }
-        int mid = (m + n - 1) / 2;
         if ((m + n) % 2 != 0) {
-            return (double)nums[mid];
+            return (double)nums[exp];
         } else {
-            return ((double)nums[mid] + (double)nums[mid + 1]) / 2;
+            return ((double)nums[exp] + (double)nums[exp + 1]) / 2;
         }
     }
 }
