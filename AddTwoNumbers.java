@@ -29,13 +29,8 @@ class Solution {
             
             int sum = val1 + val2 + carry;
             
-            if(sum >= 10) {
-                current.next = new ListNode(sum%10);
-                carry = 1;
-            } else {
-                current.next = new ListNode(sum);
-                carry = 0;
-            }
+            current.next = new ListNode(sum % 10);
+            carry = sum / 10;
             
             l1 = l1 == null ? null : l1.next;
             l2 = l2 == null ? null : l2.next;
