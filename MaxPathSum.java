@@ -17,11 +17,8 @@ https://leetcode.com/problems/binary-tree-maximum-path-sum/
  * }
  */
 class Solution {
-    int max;
+    int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
-        if(root == null)
-            return 0;
-        max = root.val;
         maxPath(root);
         return max;
     }
